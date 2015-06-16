@@ -21,13 +21,14 @@ for i = 1:lenframes
         last = last + 1;
     end
 end
-compframes
+
 if length(compframes)<20 || length(compframes)>22 || ...
         (length(compframes)>20 && compframes(19)+compframes(20) < 10)
     score = -1;
     return;
 end;
-% adding up values
+
+% checking for wrong even entries and get the chance to add up values
 score = 0;
 for i = 1:2:20
     aux = sum(compframes(i:i+1));
@@ -39,6 +40,7 @@ for i = 1:2:20
     end
 end
 
+% adding up 'bonus' values
 last = 1;
 for i = 1:2:20
     if compframes(i) == 10 %strike
@@ -58,5 +60,5 @@ for i = 1:2:20
         last = last + 2;
     end
 end
-%score = score  + sum(compframes(1:20));
+
 end
